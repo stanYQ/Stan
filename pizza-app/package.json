@@ -1,7 +1,7 @@
 {
-  "name": "vue-playlist",
+  "name": "pizza-app2",
   "version": "1.0.0",
-  "description": "VueCLI脚手架搭建测试",
+  "description": "A Vue.js project",
   "author": "StanYQ <724760554@qq.com>",
   "private": true,
   "scripts": {
@@ -10,7 +10,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "vue": "^2.5.2"
+    "vue": "^2.5.2",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -42,8 +43,6 @@
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
     "vue-loader": "^13.3.0",
-    "vue-resource": "^1.5.1",
-    "vue-router": "^3.0.2",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
     "webpack": "^3.6.0",
