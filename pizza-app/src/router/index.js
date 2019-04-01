@@ -20,39 +20,43 @@ import PersonName from '../components/about/contact/PersonName.vue'
 
 
 Vue.use(Router);
+
+const routes = [
+  {
+    path: '/', name: 'homeLink', components: {
+      default: Home,
+      "history": History,
+      "delivery": Delivery,
+      "orderingGuide": OrderingGuide
+    }
+  },
+  { path: '/menu', name: 'menuLink', component: Menu },
+  { path: '/login', name: 'loginLink', component: Login },
+  { path: '/admin', name: 'adminLink', component: Admin },
+  { path: '/register', name: 'registerLink', component: Register },
+  {
+    path: '/about', name: 'aboutLink', redirect: "/about/contact", component: About,//设置默认路径
+    children: [
+      {
+        path: '/about/contact', name: 'contactLink', redirect: '/about/contact/phone', component: Contact,
+        children: [
+          { path: '/about/contact/phone', name: 'phoneLink', component: Phone },
+          { path: '/about/contact/personName', name: 'personName', component: PersonName }
+        ]
+      },
+      { path: '/about/delivery', name: 'deliveryLink', component: Delivery },
+      { path: '/about/history', name: 'historyLink', component: History },
+      { path: '/about/orderingGuide', name: 'orderingGuideLink', component: OrderingGuide },
+    ]
+  },
+  { path: "*", redirect: "/" }//如果找不到上方的路由找不到就会走这一条路由
+];
+
 //声明 router
 const router = new Router({
-  routes: [
-    {
-      path: '/', name: 'homeLink', components: {
-        default:Home,
-        "history":History,
-        "delivery":Delivery,
-        "orderingGuide":OrderingGuide
-      }
-    },
-    { path: '/menu', name: 'menuLink', component: Menu },
-    { path: '/login', name: 'loginLink', component: Login },
-    { path: '/admin', name: 'adminLink', component: Admin },
-    { path: '/register', name: 'registerLink', component: Register },
-    {
-      path: '/about', name: 'aboutLink', redirect: "/about/contact", component: About,//设置默认路径
-      children: [
-        {
-          path: '/about/contact', name: 'contactLink', redirect: '/about/contact/phone', component: Contact,
-          children: [
-            { path: '/about/contact/phone', name: 'phoneLink', component: Phone },
-            { path: '/about/contact/personName', name: 'personName', component: PersonName }
-          ]
-        },
-        { path: '/about/delivery', name: 'deliveryLink', component: Delivery },
-        { path: '/about/history', name: 'historyLink', component: History },
-        { path: '/about/orderingGuide', name: 'orderingGuideLink', component: OrderingGuide },
-      ]
-    },
-    { path: "*", redirect: "/" }//如果找不到上方的路由找不到就会走这一条路由
-  ],
+  routes,
   mode: "history",
+  
 });
 
 //全局守卫
