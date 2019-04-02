@@ -29,6 +29,11 @@ export default {
   name: 'app',
   components:{
     "app-header":Header,//也可以不加引号 使用小驼峰命名法  appHeader
+  },
+  created(){
+    axios.get("/api/users").then(function(result){
+      console.log(result.data);
+    });
   }
 }
 </script>

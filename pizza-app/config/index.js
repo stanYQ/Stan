@@ -3,6 +3,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const users = require('../data/users.json')
 
 module.exports = {
   dev: {
@@ -11,6 +12,14 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},
+    devServer: {
+        before(app) {
+            //http://localhost:8080/api/users
+            app.get('/api/users', (req, res) => {
+                res.json(users);
+            });
+        }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -35,6 +44,7 @@ module.exports = {
 
     cssSourceMap: true
   },
+
 
   build: {
     // Template for index.html
