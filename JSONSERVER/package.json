@@ -1,0 +1,15 @@
+{
+  "name": "jsonserver",
+  "version": "1.0.0",
+  "description": "text restful json-server",
+  "main": "index.js",
+  "scripts": {
+    "json:server":"json-server --watch db.json",
+    "json:blogsdata":"json-server --watch blogsdata.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.14.2"
+  }
+}
