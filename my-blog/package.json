@@ -10,9 +10,13 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "vue": "^2.5.2"
+    "axios": "^0.18.0",
+    "vue": "^2.5.2",
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.0.2"
   },
   "devDependencies": {
+    "@types/sequelize": "^4.27.46",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",

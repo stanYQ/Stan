@@ -125,7 +125,7 @@ export default {
     //   .then(function(result) {
     //     console.log(result.data);
     //   });
-    axios.post('http://localhost:8080/api/users',{name:'stan',phone:'3264249',email:'27389137@qq.com'})
+    axios.post('http://localhost:8081/api/users',{name:'stan',phone:'3264249',email:'27389137@qq.com'})
     .then((result) => {
       console.log(result.data);
     }).catch((err) => {
