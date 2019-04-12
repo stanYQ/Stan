@@ -53,9 +53,9 @@
   ],
   "loginActive": [
     {
-      "active": true,
-      "user": "Henrry",
-      "userid": 1
+      "active": false,
+      "user": "",
+      "userid": null
     }
   ],
   "blogs": [

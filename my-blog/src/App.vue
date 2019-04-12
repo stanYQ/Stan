@@ -6,14 +6,13 @@
 </template>
 
 <script>
-import AddBlog from './components/AddBlog'
-import ShowBlog from './components/ShowBlogs'
+
 import BlogHeader from './components/BlogHeader'
 
 export default {
   name: 'App',
   components: {
-    AddBlog,ShowBlog,BlogHeader
+    BlogHeader
   }
 }
 </script>
