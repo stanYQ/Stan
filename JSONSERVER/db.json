@@ -31,6 +31,16 @@
       "id": 4,
       "age": 30,
       "companyId": 3
+    },
+    {
+      "name": "Stan",
+      "phone": "121-321-231",
+      "email": "Stan@email.com",
+      "education": "博士",
+      "graduactionschool": "南开大学",
+      "profession": "前端架构师",
+      "profile": "发发发大大发发发发",
+      "id": 5
     }
   ],
   "companies": [

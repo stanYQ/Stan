@@ -2,6 +2,7 @@
   <div id="single-blog">
     <h1>{{blog.title}}</h1>
     <pre>{{blog.content}}</pre>
+    <button>删除</button>
   </div>
 </template>
 
@@ -45,4 +46,5 @@ export default {
   background: #eee;
   border: 1px dotted #aaaaaa;
 }
+
 </style>
