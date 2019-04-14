@@ -59,7 +59,7 @@ export default {
   name: "add",
   data() {
     return {
-      customer: {}
+      customer: {},
     };
   },
   methods: {
@@ -77,8 +77,7 @@ export default {
           profile: this.customer.profile
         }
         addCustomerInfo(newCustomer).then((result) => {
-          alert("添加成功");
-          this.$router.push("/");
+          this.$router.push({path:"/",query:{alert:"用户信息添加成功！"}});
         }).catch((err) => {
           console.log(err);
         });
