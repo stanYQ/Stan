@@ -1,10 +1,9 @@
 <template>
   <div id="single-blog">
     <h1>{{blog.title}}</h1>
-    <article>{{blog.content}}</article>
+    <pre>{{blog.content}}</pre>
   </div>
 </template>
-
 
 <script>
 import { getSingleBlog } from "../api/api.js";

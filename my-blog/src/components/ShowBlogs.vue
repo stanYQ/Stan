@@ -8,7 +8,7 @@
         <h2 v-rainbow>{{blog.title}}</h2>
       </router-link>
       <!--实现局部自定义属性-->
-      <article>{{blog.content | snippet }}</article>
+      <pre>{{blog.content | snippet }}</pre><!--接收textarea的内容怎么输入 就按照该格式输出-->
       <!--实现局部过滤器 sinppet-->
     </div>
   </div>
@@ -48,7 +48,7 @@ export default {
           console.log(err);
         });
     } else {
-        this.blogs = get("blogsData");
+      this.blogs = get("blogsData");
     }
   },
   computed: {
@@ -66,7 +66,7 @@ export default {
   //局部过滤器定义
   filters: {
     snippet: function(value) {
-      if(value.length >=100){
+      if (value.length >= 100) {
         return value.slice(0, 100) + "...";
       }
     }

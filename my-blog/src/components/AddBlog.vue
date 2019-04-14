@@ -27,7 +27,7 @@
       <h3>博客总览</h3>
       <p>博客标题：{{blog.title}}</p>
       <p>博客内容：</p>
-      <p>{{blog.content}}</p>
+      <pre>{{blog.content}}</pre>
       <p>博客分类：</p>
       <ul>
         <li v-for="(category,index) in blog.categories" :key="index">{{category}}</li>
@@ -76,21 +76,8 @@ export default {
   },
   created() {
     this.authors = [];
-    if (get("usersData").length) {
-      get("usersData").forEach(element => {
-        this.authors.push(element.name);
-      });
-    } else {
-      getUsers()
-        .then(result => {
-          result.data.forEach(element => {
-            this.authors.push(element.name);
-          });
-          save("usersData", result.data);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+    if (get("loginActiveData")) {
+        this.authors.push(get("loginActiveData").user);
     }
   }
 };
@@ -150,5 +137,6 @@ h3 {
 
 textarea {
   height: 200px;
+  word-wrap: break-word;
 }
 </style>

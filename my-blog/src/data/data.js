@@ -1,6 +1,6 @@
 
 let data = {
-    "loginActiveData":[],//登录状态的缓存
+    "loginActiveData":null,//登录状态的缓存
     "blogsData":[],//博客内容
     "usersData":[],
 }

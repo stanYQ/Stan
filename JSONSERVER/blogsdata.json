@@ -20,7 +20,7 @@
       "email": "henry@email.com",
       "id": 1,
       "age": 30,
-      "possword": "123456",
+      "password": "123456",
       "companyId": 1
     },
     {
@@ -29,7 +29,7 @@
       "email": "bucky@email.com",
       "id": 2,
       "age": 30,
-      "possword": "654321",
+      "password": "654321",
       "companyId": 2
     },
     {
@@ -38,7 +38,7 @@
       "email": "emily@email.com",
       "id": 3,
       "age": 30,
-      "possword": "098765",
+      "password": "098765",
       "companyId": 3
     },
     {
@@ -47,12 +47,13 @@
       "email": "elyse@email.com",
       "id": 4,
       "age": 30,
-      "possword": "567890",
+      "password": "567890",
       "companyId": 3
     }
   ],
   "loginActive": [
     {
+      "id": 1,
       "active": false,
       "user": "",
       "userid": null
@@ -60,60 +61,13 @@
   ],
   "blogs": [
     {
-      "title": "dsfadfa",
-      "content": "dfadfadfadf",
+      "title": "Vue2.x ---> 兄弟组件传值(事件监听的方式)",
+      "content": "首先建立一个eventBus.js\n\nimport Vue from 'vue'\nexport default new Vue();\n\n\n子组件a 代码\n\n<template>\n    <div>\n        <button v-on:click=\"abtn\">\n            A按钮\n        </button>\n    </div>\n</template>\n\n<script>\n    import evenBus from ''\n    export default {\n        data(){\n            return{\n                msg:\"我是组件a\"\n            }\n        },\n        methods:{\n            abtn:function(){\n                eventBus.$emit(\"myFun\",this.msg);//注册一个事件\n            }\n        }\n    }\n    \n</script>\n\n\n子组件b 代码\n<template>\n    <div>\n      <h1>\n          {{btext}}\n        </h1>\n    </div>\n</template>\n\n<script>\n    import evenBus from ''\n    export default {\n        data(){\n            return {\n                btext:\"我是组件b\"，\n            }\n        },\n        created(){\n            this.bbtn();\n        },\n        methods:{\n            bbtn:function(){\n                eventBus.$on(\"myFun\",(message)=>{//监听事件myFun\n                    this.btext = message;\n                });\n            }\n        }\n    }\n\n</script>\n\n",
       "author": "Henry",
-      "categories": [
-        "Vue.js",
-        "Node.js",
-        "React.js"
-      ],
-      "id": 1
-    },
-    {
-      "title": "asdfsadsad",
-      "content": "fdsafdfaf",
-      "author": "Bucky",
-      "categories": [
-        "React.js"
-      ],
-      "id": 2
-    },
-    {
-      "title": "大额发",
-      "content": "大发发",
-      "author": "Emily",
-      "categories": [
-        "Node.js"
-      ],
-      "id": 3
-    },
-    {
-      "title": "dafdf",
-      "content": "afdfadd",
-      "author": "Bucky",
       "categories": [
         "Vue.js"
       ],
-      "id": 4
-    },
-    {
-      "title": "sadsad",
-      "content": "asdsada",
-      "author": "Bucky",
-      "categories": [
-        "Node.js"
-      ],
-      "id": 5
-    },
-    {
-      "title": "adfadf",
-      "content": "adfaf",
-      "author": "Bucky",
-      "categories": [
-        "React.js"
-      ],
-      "id": 6
+      "id": 1
     }
   ],
   "profile": {
