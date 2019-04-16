@@ -1,6 +1,14 @@
 <template>
   <div class="details container">
-    <h1 class="page-header">{{customer.name}}</h1>
+    <router-link to="/" class="btn btn-default">返回</router-link>
+    <h1 class="page-header">{{customer.name}}
+      <span class="pull-right">
+        <router-link class="btn btn-primary" v-bind:to="'/edit/'+customer.id">
+          编辑
+        </router-link>
+        <button class="btn btn-danger" v-on:click="deleteCustomer()">删除</button>
+      </span>
+    </h1>
     <ul class="list-group">
       <li class="list-group-item">
         <span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;&nbsp;
@@ -34,6 +42,7 @@
 
 <script>
 import { getSingleCustomerInfo } from "@/api/api.js";
+import { deleteCustomerInfo} from "@/api/api.js";
 export default {
   name: "customerdetails",
   data() {
@@ -46,9 +55,15 @@ export default {
       getSingleCustomerInfo(id)
         .then(result => {
           this.customer = result.data;
-          console.log(this.customer);
         })
         .catch(err => {});
+    },
+    deleteCustomer(){
+      deleteCustomerInfo(this.customer.id)
+      .then(result=>{
+        console.log(result)
+        this.$router.push({path:'/',query:{alert:"用户删除成功！"}});
+      })
     }
   },
   created() {

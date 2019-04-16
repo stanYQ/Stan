@@ -1,8 +1,8 @@
 <template>
   <div class="add container">
-     <router-link to="/" class="btn btn-default pull-left">返回</router-link>
-    <h1 class="page-header">添加用户</h1>
-    <form v-on:submit="addCustomer">
+       <router-link to="/" class="btn btn-default pull-left">返回</router-link>
+    <h1 class="page-header">修改用户信息</h1>
+    <form v-on:submit="updateCustomer">
       <div class="well right">
         <h4>用户信息</h4>
         <div class="form-group">
@@ -48,14 +48,15 @@
           <label>个人简介</label>
           <textarea rows="10" class="form-control" placeholder="profile" v-model="customer.profile"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">添加</button>
+        <button type="submit" class="btn btn-primary">修改</button>
       </div>
     </form>
   </div>
 </template>
 
 <script>
-import {addCustomerInfo} from '@/api/api.js'
+import {updateCustomerInfo} from '@/api/api.js'
+import {getSingleCustomerInfo} from '@/api/api.js'
 export default {
   name: "add",
   data() {
@@ -64,11 +65,11 @@ export default {
     };
   },
   methods: {
-    addCustomer(e) {
+    updateCustomer(e) {
       if (!this.customer.name || !this.customer.email || !this.customer.phone) {
         alert("请输入对应信息");
       } else {
-        let newCustomer = {
+        let updateCustomer = {
           name: this.customer.name,
           phone: this.customer.phone,
           email: this.customer.email,
@@ -77,8 +78,9 @@ export default {
           profession: this.customer.profession,
           profile: this.customer.profile
         }
-        addCustomerInfo(newCustomer).then((result) => {
-          this.$router.push({path:"/",query:{alert:"用户信息添加成功！"}});
+        updateCustomerInfo(updateCustomer,this.$route.params.id).then((result) => {
+            console.log(result)
+          this.$router.push({path:"/",query:{alert:"用户信息修改成功！"}});
         }).catch((err) => {
           console.log(err);
         });
@@ -87,6 +89,15 @@ export default {
       e.preventDefault();
       
     }
+  },
+  created(){
+      getSingleCustomerInfo(this.$route.params.id).
+      then((result) => {
+          this.customer = result.data;
+      }).catch((err) => {
+          console.log(err);
+      });
+
   }
 };
 </script>
