@@ -1,6 +1,6 @@
 <template>
   <div class="add container">
-       <router-link to="/" class="btn btn-default pull-left">返回</router-link>
+   <Alert v-if="alert" :message="alert"></Alert> 
     <h1 class="page-header">修改用户信息</h1>
     <form v-on:submit="updateCustomer">
       <div class="well right">
@@ -49,6 +49,8 @@
           <textarea rows="10" class="form-control" placeholder="profile" v-model="customer.profile"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">修改</button>
+  
+       <router-link to="/" class="btn btn-default">返回</router-link>
       </div>
     </form>
   </div>
@@ -57,17 +59,22 @@
 <script>
 import {updateCustomerInfo} from '@/api/api.js'
 import {getSingleCustomerInfo} from '@/api/api.js'
+import Alert from './Alert'
 export default {
   name: "add",
+  components:{
+    Alert
+  },
   data() {
     return {
       customer: {},
+      alert:""
     };
   },
   methods: {
     updateCustomer(e) {
       if (!this.customer.name || !this.customer.email || !this.customer.phone) {
-        alert("请输入对应信息");
+        this.alert="请输入对应信息";
       } else {
         let updateCustomer = {
           name: this.customer.name,
