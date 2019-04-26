@@ -35,7 +35,7 @@ session_start();
                  <div class="navbar-header pull-left">
                     <a href="#" class="navbar-brand">
                         <small>
-                            <h4>学生信息管理系统</h4>
+                            <h4>学生综合素质测评系统</h4>
                         </small>
                     </a>
                 </div>

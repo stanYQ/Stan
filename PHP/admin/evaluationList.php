@@ -35,7 +35,7 @@ session_start();
                  <div class="navbar-header pull-left">
                     <a href="#" class="navbar-brand">
                         <small>
-                            <h4>学生信息管理系统</h4>
+                            <h4>学生综合素质测评系统</h4>
                         </small>
                     </a>
                 </div>
@@ -223,7 +223,7 @@ session_start();
                 <!-- Page Body -->
                 <div class="page-body">
 
-                    <button type="button" tooltip="添加用户" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = './add.php'">
+                    <button type="button" tooltip="添加用户" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = './evaluationAdd.php'">
                         <i class="fa fa-plus"></i> Add
                     </button>
                     <div class="row">

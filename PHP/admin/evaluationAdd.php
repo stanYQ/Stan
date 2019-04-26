@@ -205,12 +205,12 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                                         <li>
-                        <a href="#">学生信息管理</a>
+                        <a href="#">测评信息管理</a>
                     </li>
                                         <li>
-                        <a href="#">学生信息列表</a>
+                        <a href="#">测评信息列表</a>
                     </li>
-                    <li class="active">添加学生</li>
+                    <li class="active">添加测评信息</li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -222,11 +222,11 @@
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">新增学生</span>
+                <span class="widget-caption">新增测评</span>
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" action="./action/addAction.php" method="get">
+                    <form class="form-horizontal" role="form" action="./action/addEvaluationAction.php" method="get">
                         <div class="form-group">
                             <label class="col-sm-2 control-label no-padding-right">学号</label>
                             <div class="col-sm-6">
@@ -234,70 +234,67 @@
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
+                         <div class="form-group">
+                            <label for="" class="col-sm-2 control-label no-padding-right">所在学期</label>
+                            <div class="col-sm-6">
+                                <select name="termID" style="width: 100%;">
+                                <option selected="selected" value="">请选择学期</option>
+                                <?php
+                                    getTerm();
+                                ?>
+                                </select>
+                            </div>
+                             <p class="help-block col-sm-4 red">* 必填</p>
+                        </div> 
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label no-padding-right">姓名</label>
+                            <label class="col-sm-2 control-label no-padding-right">思想道德素质分</label>
                              <div class="col-sm-6">
-                                <input class="form-control" id="Sname" placeholder="" name="Sname" required="" type="text">
+                                <input class="form-control" id="moralScore" placeholder="" name="moralScore" required="" type="text">
                             </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>  
-                         <div class="form-group">
-                            <label  class="col-sm-2 control-label no-padding-right">性别</label>
-                            <div class="col-sm-6">
-                                <select name="Ssex" style="width: 100%;">
-                                <option selected="selected" value="男">男</option>
-                                <option value="女">女</option>
-                                </select>
-                            </div>
+                            <p class="help-block col-sm-4 red">分（满分100分）</p>
                         </div>  
                           <div class="form-group">
-                            <label for="Sstate" class="col-sm-2 control-label no-padding-right">政治面貌</label>
-                            <div class="col-sm-6">
-                                <select name="Sstate" style="width: 100%;">
-                                <option selected="selected" value="党员">党员</option>
-                                <option value="团员">团员</option>
-                                 <option value="清白">清白</option>
-                                </select>
+                            <label class="col-sm-2 control-label no-padding-right">专业理论素质分</label>
+                             <div class="col-sm-6">
+                                <input class="form-control" id="theoryScore" placeholder="" name="theoryScore" required="" type="text">
                             </div>
-                        </div> 
-                        <div class="form-group">
-                            <label for="Scollege" class="col-sm-2 control-label no-padding-right">学院</label>
-                            <div class="col-sm-6">
-                                <select id ="college" name="college" onChange = "jump()" style="width: 100%;">
-                                          <option selected="selected" value="" >请选择所在学院</option>
-                                           <?php
-                                              getCollege();
-                                           ?>
-                                </select>
-                            </div>
-                        </div> 
+                            <p class="help-block col-sm-4 red">分（满分100分）</p>
+                        </div>  
                           <div class="form-group">
-                            <label for="major" class="col-sm-2 control-label no-padding-right">专业</label>
-                            <div class="col-sm-6">
-                                <select id="major" name="major" style="width: 100%;">
-                                   <option selected="selected" value="">请选择所在专业</option>
-                                </select>
+                            <label class="col-sm-2 control-label no-padding-right">身体素质分</label>
+                             <div class="col-sm-6">
+                                <input class="form-control" id="healthScore" placeholder="" name="healthScore" required="" type="text">
                             </div>
-                        </div> 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label no-padding-right">生日</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" id="Sbirthday" placeholder="" name="Sbirthday" required="" type="text">
+                            <p class="help-block col-sm-4 red">分（满分100分）</p>
+                        </div>  
+                          <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">人文素质分</label>
+                             <div class="col-sm-6">
+                                <input class="form-control" id="practiceScore" placeholder="" name="practiceScore" required="" type="text">
                             </div>
-                            <!-- <p class="help-block col-sm-4 red">* 必填</p> -->
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label no-padding-right">地址</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" id="Saddress" placeholder="" name="Saddress" required="" type="text">
+                            <p class="help-block col-sm-4 red">分（满分100分）</p>
+                        </div>  
+                          <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">创新与实践素质分</label>
+                             <div class="col-sm-6">
+                                <input class="form-control" id="inregrateScore" placeholder="" name="integrateScore" required="" type="text">
                             </div>
-                            <!-- <p class="help-block col-sm-4 red">* 必填</p> -->
-                        </div>
+                            <p class="help-block col-sm-4 red">分（满分100分）</p>
+                        </div>  
+                             <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">对该生评价</label>
+                             <div class="col-sm-6">
+                             <textarea class="form-control" name="evaluation"   cols="40"   rows="4"   style="OVERFLOW:hidden"></textarea>
+                            </div>
+                           
+                        </div>  
+                       
                          
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-default">保存信息</button>
+                                <button type="reset" class="btn btn-default" style="margin-left:20px;">重置</button>
                             </div>
                         </div>
                     </form>
@@ -320,42 +317,14 @@
     <script src="style/jquery.js"></script>
     <!--Beyond Scripts-->
     <script src="style/beyond.js"></script>
-    <script type="text/javascript">
-    //二级联动下拉列表框
-       function jump(){
-         var collegeName = document.getElementById('college').value;
-         var data = {college:collegeName};
-          $.ajax({
-                url: "./action/selectAction.php",             // php的url路径
-                type: 'POST',
-                data: data,
-                success: function(res) {
-                    var option = "<option style='width:100%'>请选择专业</option>";
-                    var r = JSON.parse(res);//返回的是一个json格式的字符串  需要进行解析
-                    
-                    if(r.code == 200){
-                        var list = r.list;
-                        for (var i = 0; i < list.length; i++) {   // 循环返回的值（城市）
-                        option += "<option style='width:100%'>" + list[i] + "</option>";
-                        }
-                    }
-                    $("#major").html(option);    // js刷新第二个下拉框的值
-                }
-            })
 
-       }
-    </script>
-
-
-    
-
-
+    <script type="j"></script>
 </body></html>
 
 <?php
-//初始化一级列表框 
-function getCollege(){
-    $sql = "select * from college";
+
+function getTerm(){
+      $sql = "select * from termInfo";
     //连接数据库
     $mysqli = new mysqli("localhost",'root','123456','infodb') or die('连接数据库失败');
     //设置编码格式
@@ -366,9 +335,10 @@ function getCollege(){
         die('执行sql出错'.$sql);
     }
     while($msg = mysqli_fetch_row($res)) {
-        echo "<option value=".$msg[1].">".$msg[1]."</option>";
+        echo "<option value=".$msg[0].">".$msg[1]."</option>";
     }
     $mysqli->close();
+
 }
 
 ?>
