@@ -228,12 +228,12 @@ include './action/editStart.php'
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" action="./action/addAction.php" method="get">
+                    <form class="form-horizontal" role="form" action="./action/editAction.php" method="get">
                         <div class="form-group">
                             <label class="col-sm-2 control-label no-padding-right">学号</label>
                             <div id='snoInput' class="col-sm-6">
                                 <?php
-                                echo "<input class='form-control' id='Sno' placeholder='$list[0]' name='Sno' required='' type='text'>";
+                                echo "<input class='form-control' id='Sno' placeholder='$list[0]' value='$list[0]' name='Sno' type='text'>";
                                 
                                 ?>
                                 
@@ -245,7 +245,7 @@ include './action/editStart.php'
                             <label class="col-sm-2 control-label no-padding-right">姓名</label>
                              <div class="col-sm-6">
                                  <?php
-                                 echo " <input class='form-control' id='Sname' placeholder='$list[1]' name='Sname' required='' type='text'>";
+                                 echo " <input class='form-control' id='Sname' placeholder='$list[1]' value = '$list[1]' name='Sname'  type='text'>";
                                  ?>
                                
                             </div>
@@ -315,7 +315,7 @@ include './action/editStart.php'
                             <label class="col-sm-2 control-label no-padding-right">生日</label>
                             <div class="col-sm-6">
                                <?php
-                               echo "   <input class='form-control' id='Sbirthday' placeholder='$list[6]' name='Sbirthday' required='' type='text'>";
+                               echo "   <input class='form-control' id='Sbirthday' placeholder='$list[6]' value='$list[6]' name='Sbirthday'  type='text'>";
                                ?>
                             </div>
                         </div>
@@ -324,7 +324,7 @@ include './action/editStart.php'
                             <div class="col-sm-6">
                                
                                  <?php
-                               echo "   <input class='form-control' id='Saddress' placeholder='$list[7]' name='Saddress' required='' type='text'>";
+                               echo "   <input class='form-control' id='Saddress' placeholder='$list[7]' name='Saddress' value='$list[7]'  type='text'>";
                                ?>
                             </div>
                            
