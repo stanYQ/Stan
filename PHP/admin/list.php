@@ -159,7 +159,7 @@ session_start();
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="./list.php?action=user">
+                                <a href="./evaluationList.php">
                                     <span class="menu-text">
                                         测评信息列表 </span>
                                     <i class="menu-expand"></i>
@@ -210,26 +210,12 @@ session_start();
             <div class="page-content">
                 <!-- Page Breadcrumb -->
                 <div class="page-breadcrumbs">
-                     <?php
-                        $action = $_GET['action'];
-                          if($action == "student"){
-                              echo " <ul class='breadcrumb'>
+                             <ul class='breadcrumb'>
                                <li>
-                               <a href='#'>学生管理</a>
+                               <a href='#'>学生信息管理</a>
                                </li>
-                               <li class='active'>学生列表</li>
-                               </ul>";
-                          }
-
-                          if($action == "user"){
-                               echo " <ul class='breadcrumb'>
-                               <li>
-                               <a href='#'>用户管理</a>
-                               </li>
-                               <li class='active'>用户列表</li>
-                               </ul>";
-                          }
-                    ?>
+                               <li class='active'>学生信息列表</li>
+                               </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
 
@@ -247,8 +233,10 @@ session_start();
                                         <table class="table table-bordered table-hover">
                                             <thead class="">
                                                 <tr>
-                                                    <th class="text-center">ID</th>
-                                                    <th class="text-center">用户名称</th>
+                                                    <th class="text-center">学号</th>
+                                                    <th class="text-center">姓名</th>
+                                                    <th class="text-center">性别</th>
+                                                    <th class="text-center">专业</th>
                                                     <th class="text-center">操作</th>
                                                 </tr>
                                             </thead>
@@ -291,24 +279,16 @@ session_start();
 <?php
 function start(){
    if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-       $action = $_GET['action'];
-       if($action == "student"){
            //构建sql
            $sql ="select * from student";
-           getStudentData($sql,"removeStudent");
-       }
-       if($action == "user"){
-             $sql ="select * from userinfo_table";
-           getStudentData($sql,"removeUser");
-       }
+           getStudentData($sql);
         }else{
         echo  "<a href='./login.html'>还没登录请先登录</a>"; 
      }
 
 }
 
-function getStudentData($sql,$action){
-    
+function getStudentData($sql){
 
 // echo $sql;
 
@@ -331,11 +311,13 @@ if($res === false){
 while($msg = mysqli_fetch_row($res)) {
     echo "<tr>";
     echo "<td align='center'>".$msg[0]."</td>";      
-    echo "<td align='center'>".$msg[1]."</td>";                                                
+    echo "<td align='center'>".$msg[1]."</td>"; 
+    echo "<td align='center'>".$msg[2]."</td>";      
+    echo "<td align='center'>".$msg[5]."</td>";                                                   
     echo "<td align='center'>";
     echo " <a href='./edit.php?action=edit&id=".$msg[0]."' class='btn btn-primary btn-sm shiny'>";                                                
     echo " <i class='fa fa-edit'></i> 编辑  </a>";                                             
-    echo "<a href='./action/remove.php?action=".$action."&id=".$msg[0]."
+    echo "<a href='./action/remove.php?id=".$msg[0]."
           ' class='btn btn-danger btn-sm shiny'>
           <i class='fa fa-trash-o'></i> 删除</a></td></tr>";
         }

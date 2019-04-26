@@ -1,13 +1,13 @@
- <?php
+<?php
 session_start();
-?> 
+?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>主页</title>
+    <title></title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +32,7 @@ session_start();
         <div class="navbar-inner">
             <div class="navbar-container">
                 <!-- Navbar Barnd -->
-                <div class="navbar-header pull-left">
+                 <div class="navbar-header pull-left">
                     <a href="#" class="navbar-brand">
                         <small>
                             <h4>大学生综合素质测评系统</h4>
@@ -62,7 +62,7 @@ session_start();
                                 <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
                                     <li class="username"><a>David Stevenson</a></li>
                                     <li class="dropdown-footer">
-                                        <a href="./action/logout.php" onclick = "logout" >
+                                        <a href="/admin/user/logout.html">
                                             退出登录
                                         </a>
                                     </li>
@@ -100,7 +100,7 @@ session_start();
                 </div>
                 <!-- /Page Sidebar Header -->
                 <!-- Sidebar Menu -->
-                <ul class="nav sidebar-menu">
+               <ul class="nav sidebar-menu">
                     <!--Dashboard-->
                     <li>
                         <a href="#" class="menu-dropdown">
@@ -205,30 +205,64 @@ session_start();
                 <!-- /Sidebar Menu -->
             </div>
             <!-- /Page Sidebar -->
+
             <!-- Page Content -->
             <div class="page-content">
                 <!-- Page Breadcrumb -->
                 <div class="page-breadcrumbs">
-                    <ul class="breadcrumb">
-                        <li class="active">控制面板</li>
-                    </ul>
+                             <ul class='breadcrumb'>
+                               <li>
+                               <a href='#'>测评信息管理</a>
+                               </li>
+                               <li class='active'>测评信息列表</li>
+                               </ul>
+                         
                 </div>
                 <!-- /Page Breadcrumb -->
 
                 <!-- Page Body -->
                 <div class="page-body">
-                    
-                     <?php start()?>
-                   
+
+                    <button type="button" tooltip="添加用户" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = './add.php'">
+                        <i class="fa fa-plus"></i> Add
+                    </button>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="widget">
+                                <div class="widget-body">
+                                    <div class="flip-scroll">
+                                        <table class="table table-bordered table-hover">
+                                            <thead class="">
+                                                <tr>
+                                                    <th class="text-center">学号</th>
+                                                    <th class="text-center">姓名</th>
+                                                    <th class="text-center">专业</th>
+                                                    <th class="text-center">学期</th>
+                                                    <th class="text-center">综合分</th>
+                                                    <th class="text-center">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               <?php 
+                                               start();
+                                               ?>
+                                               
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-
-
+                <!-- /Page Body -->
             </div>
-            <!-- /Page Body -->
+            <!-- /Page Content -->
         </div>
-        <!-- /Page Content -->
     </div>
-    
 
     <!--Basic Scripts-->
     <script src="style/jquery_002.js"></script>
@@ -236,6 +270,10 @@ session_start();
     <script src="style/jquery.js"></script>
     <!--Beyond Scripts-->
     <script src="style/beyond.js"></script>
+
+
+
+
 </body>
 
 </html>
@@ -243,10 +281,71 @@ session_start();
 <?php
 function start(){
    if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-        echo "登录成功：".$_SESSION['user'];
+       getEvaluationData();
         }else{
         echo  "<a href='./login.html'>还没登录请先登录</a>"; 
      }
-
 }
+
+function getEvaluationData(){
+    // 
+$sql = "select * from evaluationInfo";
+//连接数据库
+$mysqli = new mysqli("localhost",'root','123456','infodb') or die('连接数据库失败');
+
+
+//设置编码格式
+$mysqli->set_charset('utf8');
+
+
+//执行sql
+$res=$mysqli ->query($sql);
+
+if($res === false){
+	die('执行sql出错'.$sql);
+}
+
+
+while($msg = mysqli_fetch_row($res)) {
+    $sql2 = "select * from student where Sno=$msg[1]";
+    //执行sql
+    $res2=$mysqli ->query($sql2);
+    if($res === false){
+        die('执行sql出错'.$sql2);
+    }
+    $msg2 = mysqli_fetch_row($res2);//根据学生id获取该学生的所有数据
+
+    $sql3 = "select * from termInfo where Tno = $msg[2]";
+      $res3=$mysqli ->query($sql3);
+    if($res === false){
+        die('执行sql出错'.$sql3);
+    }
+    $msg3 = mysqli_fetch_row($res3);//根据学生id获取该学生的所有数据
+
+    echo "<tr>";
+    echo "<td align='center'>".$msg[1]."</td>";      
+    echo "<td align='center'>".$msg2[1]."</td>"; 
+    echo "<td align='center'>".$msg2[5]."</td>";
+    echo "<td align='center'>".$msg3[1]."</td>";        
+    echo "<td align='center'>".getSorce($msg)."</td>";                                                   
+    echo "<td align='center'>";
+    echo " <a href='./edit.php?action=edit&id=".$msg[0]."' class='btn btn-primary btn-sm shiny'>";                                                
+    echo " <i class='fa fa-edit'></i> 编辑  </a>";                                             
+    echo "<a href='./action/remove.php?id=".$msg[0]."
+          ' class='btn btn-danger btn-sm shiny'>
+          <i class='fa fa-trash-o'></i> 删除</a></td></tr>";
+        }
+        $mysqli->close();
+}
+
+function getSorce($evaInfo){
+    $sum = $evaInfo[3] + $evaInfo[4] + $evaInfo[5] + $evaInfo[6] + $evaInfo[7];
+    $ave = $sum*0.2;
+    return $ave;
+}
+
+
+
+
+
 ?>

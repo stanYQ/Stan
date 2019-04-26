@@ -31,7 +31,7 @@ include './action/editStart.php'
            <div class="navbar-header pull-left">
                     <a href="#" class="navbar-brand">
                         <small>
-                            <h4>学生信息管理系统</h4>
+                            <h4>大学生综合素质测评系统</h4>
                         </small>
                     </a>
                 </div>
@@ -135,7 +135,7 @@ include './action/editStart.php'
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="./list.php?action=student">
+                                <a href="./list.php">
                                     <span class="menu-text">
                                         学生信息列表 </span>
                                     <i class="menu-expand"></i>
@@ -155,7 +155,7 @@ include './action/editStart.php'
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="./list.php?action=user">
+                                <a href="./evaluationList.php">
                                     <span class="menu-text">
                                         测评信息列表 </span>
                                     <i class="menu-expand"></i>

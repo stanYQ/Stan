@@ -15,20 +15,11 @@
  * Date: 2019/4/22 0022
  * Time: 下午 4:59
  */
-$action = $_GET["action"];
 // echo $action;
  $id = $_GET["id"];
-if($action == "removeStudent"){
     //构建sql
     $sql ="delete from student WHERE Sno = {$id}";
     remove($sql);
-}
-
-if($action == "removeUser"){
-    $sql ="delete from userinfo_table WHERE id = {$id}";
-    remove($sql);
-}
-
 
 function remove($sql){
      
@@ -52,9 +43,10 @@ if($result){
 }else{
     echo "<h3>删除信息失败</h3>";
 }
+$mysqli->close();
 }
 
-$mysqli->close();
+
 ?>
 
 
