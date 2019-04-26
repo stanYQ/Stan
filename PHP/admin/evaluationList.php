@@ -62,15 +62,11 @@ session_start();
                                 <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
                                     <li class="username"><a>David Stevenson</a></li>
                                     <li class="dropdown-footer">
-                                        <a href="/admin/user/logout.html">
+                                        <a href="./action/logout.php">
                                             退出登录
                                         </a>
                                     </li>
-                                    <li class="dropdown-footer">
-                                        <a href="/admin/user/changePwd.html">
-                                            修改密码
-                                        </a>
-                                    </li>
+                                 
                                 </ul>
                                 <!--/Login Area Dropdown-->
                             </li>
@@ -329,7 +325,7 @@ while($msg = mysqli_fetch_row($res)) {
     echo "<td align='center'>".$msg3[1]."</td>";        
     echo "<td align='center'>".getSorce($msg)."</td>";                                                   
     echo "<td align='center'>";
-    echo " <a href='./edit.php?action=edit&id=".$msg[0]."' class='btn btn-primary btn-sm shiny'>";                                                
+    echo " <a href='./evaluationEdit.php?action=editEvaluation&id=".$msg[0]."' class='btn btn-primary btn-sm shiny'>";                                                
     echo " <i class='fa fa-edit'></i> 编辑  </a>";                                             
     echo "<a href='./action/remove.php?action=evaluaction&id=".$msg[0]."
           ' class='btn btn-danger btn-sm shiny'>

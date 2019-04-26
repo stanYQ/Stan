@@ -66,11 +66,7 @@ session_start();
                                             退出登录
                                         </a>
                                     </li>
-                                    <li class="dropdown-footer">
-                                        <a href="/admin/user/changePwd.html">
-                                            修改密码
-                                        </a>
-                                    </li>
+                                    
                                 </ul>
                                 <!--/Login Area Dropdown-->
                             </li>
