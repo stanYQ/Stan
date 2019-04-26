@@ -35,7 +35,7 @@ session_start();
                  <div class="navbar-header pull-left">
                     <a href="#" class="navbar-brand">
                         <small>
-                            <h4>大学生综合素质测评系统</h4>
+                            <h4>学生信息管理系统</h4>
                         </small>
                     </a>
                 </div>
@@ -331,7 +331,7 @@ while($msg = mysqli_fetch_row($res)) {
     echo "<td align='center'>";
     echo " <a href='./edit.php?action=edit&id=".$msg[0]."' class='btn btn-primary btn-sm shiny'>";                                                
     echo " <i class='fa fa-edit'></i> 编辑  </a>";                                             
-    echo "<a href='./action/remove.php?id=".$msg[0]."
+    echo "<a href='./action/remove.php?action=evaluaction&id=".$msg[0]."
           ' class='btn btn-danger btn-sm shiny'>
           <i class='fa fa-trash-o'></i> 删除</a></td></tr>";
         }

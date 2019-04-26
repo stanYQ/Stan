@@ -17,10 +17,17 @@
  */
 // echo $action;
  $id = $_GET["id"];
+ $action = $_GET["action"];
     //构建sql
-    $sql ="delete from student WHERE Sno = {$id}";
+if($action == "student"){
+ $sql ="delete from student WHERE Sno = {$id}";
     remove($sql);
+}
 
+if($action == 'evaluaction'){
+    $sql = "delete from evaluationInfo WHERE Eno = {$id}";
+    remove($sql);
+}
 function remove($sql){
      
 //连接数据库
