@@ -21,7 +21,7 @@ $pwd = $_GET['password'];
 
 //
 $_SESSION['user'] = $user;
-$_SESSION['pwd'] = $pwd;
+// $_SESSION['pwd'] = $pwd;
 
 //构建sql
 $sql ="select * from userinfo_table where user_name ='$user' and user_pwd = '$pwd'";

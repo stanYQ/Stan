@@ -55,7 +55,13 @@ session_start();
                                         <img src="images/adam-jansen.jpg">
                                     </div>
                                     <section>
-                                        <h2><span class="profile"><span>admin</span></span></h2>
+                                            <?php
+                                           if(isset($_SESSION['user']) && !empty($_SESSION)){
+                                               echo "<h2><span class='profile'><span>".$_SESSION['user']."</span></span></h2>";
+                                           }else{
+                                                echo "<h2><span class='profile'><span>admin</span></span></h2>";
+                                           }
+                                        ?>
                                     </section>
                                 </a>
                                 <!--Login Area Dropdown-->
@@ -174,7 +180,7 @@ session_start();
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="#">
+                                <a href="./changePwd.php">
                                     <span class="menu-text">
                                         密码信息修改 </span>
                                     <i class="menu-expand"></i>

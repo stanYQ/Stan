@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
@@ -49,7 +51,13 @@
                                     <img src="images/adam-jansen.jpg">
                                 </div>
                                 <section>
-                                    <h2><span class="profile"><span>admin</span></span></h2>
+                                        <?php
+                                           if(isset($_SESSION['user']) && !empty($_SESSION)){
+                                               echo "<h2><span class='profile'><span>".$_SESSION['user']."</span></span></h2>";
+                                           }else{
+                                                echo "<h2><span class='profile'><span>admin</span></span></h2>";
+                                           }
+                                        ?>
                                 </section>
                             </a>
                             <!--Login Area Dropdown-->

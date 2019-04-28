@@ -7,7 +7,7 @@ session_start();
 
 <head>
     <meta charset="utf-8">
-    <title>主页</title>
+    <title>修改密码</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,14 +55,13 @@ session_start();
                                         <img src="images/adam-jansen.jpg">
                                     </div>
                                     <section>
-                                        <?php
+                                           <?php
                                            if(isset($_SESSION['user']) && !empty($_SESSION)){
                                                echo "<h2><span class='profile'><span>".$_SESSION['user']."</span></span></h2>";
                                            }else{
                                                 echo "<h2><span class='profile'><span>admin</span></span></h2>";
                                            }
                                         ?>
-                                        
                                     </section>
                                 </a>
                                 <!--Login Area Dropdown-->
@@ -213,19 +212,17 @@ session_start();
                 <!-- Page Breadcrumb -->
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
-                        <li class="active">控制面板</li>
+                        <li class="active">密码修改</li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
 
                 <!-- Page Body -->
                 <div class="page-body">
-                    
-                     <?php start()?>
-                   
+                    <?php
+                    start();
+                    ?>
                 </div>
-
-
             </div>
             <!-- /Page Body -->
         </div>
@@ -246,7 +243,27 @@ session_start();
 <?php
 function start(){
    if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-        echo "登录成功：".$_SESSION['user'];
+      echo "<div class='login-container animated fadeInDown'>
+                            <form action='./action/changePwdAction.php' method='get'>
+                                <div class='loginbox bg-white'>
+                                    <div class='loginbox-title'>CHANGE PASSWORD</div>
+                                    <div class='loginbox-textbox'>
+                                        <input value={$_SESSION['user']} class='form-control' placeholder={$_SESSION['user']} name='username' type='text'>
+                                    </div>
+                                    <div class='loginbox-textbox'>
+                                        <input class='form-control' required='' placeholder='请输入旧密码' name='passwordOld' type='password'>
+                                    </div>
+                                      <div class='loginbox-textbox'>
+                                        <input class='form-control' required='' placeholder='请设置新密码' name='passwordNew' type='password'>
+                                    </div>
+                                    <div class='loginbox-submit'>
+                                        <input class='btn btn-primary btn-block' value='Check' type='submit'>
+                                    </div>
+                                </div>
+                                
+                            </form>
+                     </div>";
+
         }else{
         echo  "<a href='./login.html'>还没登录请先登录</a>"; 
      }
