@@ -28,6 +28,12 @@ if($action == 'evaluaction'){
     $sql = "delete from evaluationInfo WHERE Eno = {$id}";
     remove($sql);
 }
+
+if($action == 'removeMajor'){
+    $sql = "delete from major WHERE majorName = '$id'";
+    remove($sql);
+}
+
 function remove($sql){
      
 //连接数据库

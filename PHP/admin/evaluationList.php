@@ -187,7 +187,7 @@ session_start();
                                 </a>
                             </li>
                               <li>
-                                <a href="#">
+                                <a href="./majorList.php">
                                     <span class="menu-text">
                                         专业信息设置 </span>
                                     <i class="menu-expand"></i>
@@ -345,9 +345,5 @@ function getSorce($evaInfo){
     $ave = $sum*0.2;
     return $ave;
 }
-
-
-
-
 
 ?>
