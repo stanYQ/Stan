@@ -1,4 +1,5 @@
 <?php
+include "./tools/tools.php";
 session_start();
 ?>
 
@@ -294,7 +295,7 @@ session_start();
                                        "<td align='center'>"+list[i][0]+"</td>"+
                                        "<td align='center'>"+list[i][1]+"</td>"+
                                        "<td align='center'>"+
-                                       " <a href='./edit.php?action=edit&majorName="+list[i][0]+"' class='btn btn-primary btn-sm shiny'>"+
+                                       " <a href='./majorEdit.php?action=edit&majorName="+list[i][0]+"' class='btn btn-primary btn-sm shiny'>"+
                                        " <i class='fa fa-edit'></i> 编辑  </a>"+
                                        "<a href='./action/remove.php?action=removeMajor&id="+list[i][0]+
                                        "'class='btn btn-danger btn-sm shiny'>"+
@@ -307,10 +308,6 @@ session_start();
         }
         
     </script>
-
-
-
-
     </body>
 
     </html>
@@ -324,58 +321,5 @@ function start(){
     }
 
 }
-//
-//function getMajorData($sql){
-//
-//// echo $sql;
-//
-////连接数据库
-//    $mysqli = new mysqli("localhost",'root','123456','infodb') or die('连接数据库失败');
-//
-//
-////设置编码格式
-//    $mysqli->set_charset('utf8');
-//
-//
-////执行sql
-//    $res=$mysqli ->query($sql);
-//
-//    if($res === false){
-//        die('执行sql出错'.$sql);
-//    }
-//
-//
-//    while($msg = mysqli_fetch_row($res)) {
-//        echo "<tr>";
-//        echo "<td align='center'>".$msg[0]."</td>";
-//        echo "<td align='center'>".$msg[1]."</td>";
-//        echo "<td align='center'>";
-//        echo " <a href='./edit.php?action=edit&majorName=".$msg[0]."' class='btn btn-primary btn-sm shiny'>";
-//        echo " <i class='fa fa-edit'></i> 编辑  </a>";
-//        echo "<a href='./action/remove.php?action=remove&majorName=".$msg[0]."
-//          ' class='btn btn-danger btn-sm shiny'>
-//          <i class='fa fa-trash-o'></i> 删除</a></td></tr>";
-//    }
-//    $mysqli->close();
-//}
 
-function getCollege(){
-      if (!isset($_SESSION['user']) && empty($_SESSION['user'])){
-          return;
-      }
-    $sql = "select * from college";
-    //连接数据库
-    $mysqli = new mysqli("localhost",'root','123456','infodb') or die('连接数据库失败');
-    //设置编码格式
-    $mysqli->set_charset('utf8');
-    //执行sql
-    $res=$mysqli ->query($sql);
-    if($res === false){
-        die('执行sql出错'.$sql);
-    }
-    while($msg = mysqli_fetch_row($res)) {
-        echo "<option value=".$msg[1].">".$msg[1]."</option>";
-    }
-    $mysqli->close();
-}
 ?>

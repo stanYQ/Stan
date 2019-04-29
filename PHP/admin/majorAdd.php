@@ -1,5 +1,6 @@
 <?php
 session_start();
+include './tools/tools.php'
 ?>
 <!DOCTYPE html>
 <html><head>
@@ -277,24 +278,3 @@ session_start();
     <script src="style/beyond.js"></script>
     
 </body></html>
-
-<?php
-//初始化一级列表框 
-function getCollege(){
-    $sql = "select * from college";
-    //连接数据库
-    $mysqli = new mysqli("localhost",'root','123456','infodb') or die('连接数据库失败');
-    //设置编码格式
-    $mysqli->set_charset('utf8');
-    //执行sql
-    $res=$mysqli ->query($sql);
-    if($res === false){
-        die('执行sql出错'.$sql);
-    }
-    while($msg = mysqli_fetch_row($res)) {
-        echo "<option value=".$msg[1].">".$msg[1]."</option>";
-    }
-    $mysqli->close();
-}
-
-?>

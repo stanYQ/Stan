@@ -1,4 +1,5 @@
 <?php
+include './tools/tools.php';
 session_start();
 ?>
 <!DOCTYPE html>
@@ -330,7 +331,7 @@ session_start();
          var collegeName = document.getElementById('college').value;
          var data = {college:collegeName};
           $.ajax({
-                url: "./action/selectAction.php",             // php的url路径
+                url: "./action/selectCollegeAction.php",             // php的url路径
                 type: 'POST',
                 data: data,
                 success: function(res) {
@@ -339,8 +340,8 @@ session_start();
                     
                     if(r.code == 200){
                         var list = r.list;
-                        for (var i = 0; i < list.length; i++) {   // 循环返回的值（城市）
-                        option += "<option style='width:100%'>" + list[i] + "</option>";
+                        for (var i = 0; i < list.length; i++) {   // 循环返回的值
+                        option += "<option style='width:100%'>" + list[i][0] + "</option>";
                         }
                     }
                     $("#major").html(option);    // js刷新第二个下拉框的值
@@ -349,30 +350,5 @@ session_start();
 
        }
     </script>
-
-
-    
-
-
 </body></html>
 
-<?php
-//初始化一级列表框 
-function getCollege(){
-    $sql = "select * from college";
-    //连接数据库
-    $mysqli = new mysqli("localhost",'root','123456','infodb') or die('连接数据库失败');
-    //设置编码格式
-    $mysqli->set_charset('utf8');
-    //执行sql
-    $res=$mysqli ->query($sql);
-    if($res === false){
-        die('执行sql出错'.$sql);
-    }
-    while($msg = mysqli_fetch_row($res)) {
-        echo "<option value=".$msg[1].">".$msg[1]."</option>";
-    }
-    $mysqli->close();
-}
-
-?>

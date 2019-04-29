@@ -1,11 +1,10 @@
 <?php
-// 查找当前需要修改的学生所有信息
-$id = $_GET['id'];
+$major = $_GET['majorName'];
 //连接数据库
 $mysqli = new mysqli("localhost",'root','123456','infodb') or die('连接数据库失败');
 
 //构建SQL
-$sql = "select * from student where Sno = '$id'";
+$sql = "select * from major where majorName = '$major'";
 //设置编码格式
 $mysqli->set_charset('utf8');
 
@@ -22,13 +21,7 @@ if($res === false){
         $list = array();
         while($row = mysqli_fetch_row($res)){
             $list = $row;
+            // echo $list;
         }
-
-        // echo $list[0][0];
-        // echo json_encode(['code'=>200, 'list'=>$list]);
     }
-    // else{
-    //     echo json_encode(['code'=>500]);
-    // }
-// $mysqli->close();
 ?>
