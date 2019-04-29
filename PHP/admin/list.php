@@ -68,7 +68,7 @@ session_start();
                                 <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
                                     <li class="username"><a>David Stevenson</a></li>
                                     <li class="dropdown-footer">
-                                        <a href="./action/logout.php">
+                                        <a href="/admin/user/logout.html">
                                             退出登录
                                         </a>
                                     </li>
@@ -187,7 +187,7 @@ session_start();
                                 </a>
                             </li>
                               <li>
-                                <a href="./majorList.php">
+                                <a href="#">
                                     <span class="menu-text">
                                         专业信息设置 </span>
                                     <i class="menu-expand"></i>
