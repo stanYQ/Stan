@@ -9,13 +9,6 @@
 </body>
 </html>
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2019/4/22 0022
- * Time: 下午 4:59
- */
-// echo $action;
  $id = $_GET["id"];
  $action = $_GET["action"];
     //构建sql

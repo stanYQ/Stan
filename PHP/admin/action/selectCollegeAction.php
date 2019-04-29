@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2019/4/29 0029
- * Time: 下午 5:34
- */
-
 $collegeName = $_POST['college'];       // 获取ajax传来的值
 // echo  $collegeName;
 $sql = "";
@@ -35,3 +28,6 @@ if($res) {
    echo json_encode(['code'=>500]);
 }
 $mysqli->close();
+
+
+?>

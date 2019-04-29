@@ -214,9 +214,9 @@ session_start();
                 <div class="page-breadcrumbs">
                     <ul class='breadcrumb'>
                         <li>
-                            <a href='#'>学生信息管理</a>
+                            <a href='#'>专业信息设置</a>
                         </li>
-                        <li class='active'>学生信息列表</li>
+                        <li class='active'>专业信息列表</li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -224,7 +224,7 @@ session_start();
                 <!-- Page Body -->
                 <div class="page-body">
 
-                    <button type="button" tooltip="添加用户" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = './add.php'">
+                    <button type="button" tooltip="添加专业" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = './majorAdd.php'">
                         <i class="fa fa-plus"></i> Add
                     </button>
                     <div class="row">
