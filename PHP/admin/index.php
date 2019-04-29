@@ -188,7 +188,7 @@ session_start();
                                 </a>
                             </li>
                               <li>
-                                <a href="#">
+                                <a href="./majorList.php">
                                     <span class="menu-text">
                                         专业信息设置 </span>
                                     <i class="menu-expand"></i>
