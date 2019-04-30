@@ -1,11 +1,13 @@
 <?php
 session_start();
-include './tools/tools.php'
 ?>
+
 <!DOCTYPE html>
-<html><head>
-	    <meta charset="utf-8">
-    <title>添加专业信息</title>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>学期信息列表</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,75 +23,76 @@ include './tools/tools.php'
     <link href="style/demo.css" rel="stylesheet">
     <link href="style/typicons.css" rel="stylesheet">
     <link href="style/animate.css" rel="stylesheet">
-    
+
 </head>
+
 <body>
-	<!-- 头部 -->
-	<div class="navbar">
-    <div class="navbar-inner">
-        <div class="navbar-container">
-            <!-- Navbar Barnd -->
-           <div class="navbar-header pull-left">
+    <!-- 头部 -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="navbar-container">
+                <!-- Navbar Barnd -->
+                 <div class="navbar-header pull-left">
                     <a href="#" class="navbar-brand">
                         <small>
                             <h4>学生综合素质测评系统</h4>
                         </small>
                     </a>
                 </div>
-            <!-- /Navbar Barnd -->
-            <!-- Sidebar Collapse -->
-            <div class="sidebar-collapse" id="sidebar-collapse">
-                <i class="collapse-icon fa fa-bars"></i>
-            </div>
-            <!-- /Sidebar Collapse -->
-            <!-- Account Area and Settings -->
-            <div class="navbar-header pull-right">
-                <div class="navbar-account">
-                    <ul class="account-area">
-                        <li>
-                            <a class="login-area dropdown-toggle" data-toggle="dropdown">
-                                <div class="avatar" title="View your public profile">
-                                    <img src="images/adam-jansen.jpg">
-                                </div>
-                                <section>
-                                        <?php
+                <!-- /Navbar Barnd -->
+                <!-- Sidebar Collapse -->
+                <div class="sidebar-collapse" id="sidebar-collapse">
+                    <i class="collapse-icon fa fa-bars"></i>
+                </div>
+                <!-- /Sidebar Collapse -->
+                <!-- Account Area and Settings -->
+                <div class="navbar-header pull-right">
+                    <div class="navbar-account">
+                        <ul class="account-area">
+                            <li>
+                                <a class="login-area dropdown-toggle" data-toggle="dropdown">
+                                    <div class="avatar" title="View your public profile">
+                                        <img src="images/adam-jansen.jpg">
+                                    </div>
+                                    <section>
+                                            <?php
                                            if(isset($_SESSION['user']) && !empty($_SESSION)){
                                                echo "<h2><span class='profile'><span>".$_SESSION['user']."</span></span></h2>";
                                            }else{
                                                 echo "<h2><span class='profile'><span>admin</span></span></h2>";
                                            }
                                         ?>
-                                </section>
-                            </a>
-                            <!--Login Area Dropdown-->
-                            <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
-                                <li class="username"><a>David Stevenson</a></li>
-                                <li class="dropdown-footer">
-                                    <a href="./action/logout.php">
+                                    </section>
+                                </a>
+                                <!--Login Area Dropdown-->
+                                <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+                                    <li class="username"><a>David Stevenson</a></li>
+                                    <li class="dropdown-footer">
+                                        <a href="./action/logout.php">
                                             退出登录
                                         </a>
-                                </li>
-                              
-                            </ul>
-                            <!--/Login Area Dropdown-->
-                        </li>
-                        <!-- /Account Area -->
-                        <!--Note: notice that setting div must start right after account area list.
+                                    </li>
+                                    
+                                </ul>
+                                <!--/Login Area Dropdown-->
+                            </li>
+                            <!-- /Account Area -->
+                            <!--Note: notice that setting div must start right after account area list.
                             no space must be between these elements-->
-                        <!-- Settings -->
-                    </ul>
+                            <!-- Settings -->
+                        </ul>
+                    </div>
                 </div>
+                <!-- /Account Area and Settings -->
             </div>
-            <!-- /Account Area and Settings -->
         </div>
     </div>
-</div>
 
-	<!-- /头部 -->
-	
-	<div class="main-container container-fluid">
-		<div class="page-container">
-			            <!-- Page Sidebar -->
+    <!-- /头部 -->
+
+    <div class="main-container container-fluid">
+        <div class="page-container">
+            <!-- Page Sidebar -->
             <div class="page-sidebar" id="sidebar">
                 <!-- Page Sidebar Header-->
                 <div class="sidebar-header-wrapper">
@@ -99,7 +102,7 @@ include './tools/tools.php'
                 </div>
                 <!-- /Page Sidebar Header -->
                 <!-- Sidebar Menu -->
-                <ul class="nav sidebar-menu">
+               <ul class="nav sidebar-menu">
                     <!--Dashboard-->
                     <li>
                         <a href="#" class="menu-dropdown">
@@ -138,7 +141,7 @@ include './tools/tools.php'
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="./list.php">
+                                <a href="./list.php?action=student">
                                     <span class="menu-text">
                                         学生信息列表 </span>
                                     <i class="menu-expand"></i>
@@ -177,7 +180,7 @@ include './tools/tools.php'
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="#">
+                                <a href="./changePwd.php">
                                     <span class="menu-text">
                                         密码信息修改 </span>
                                     <i class="menu-expand"></i>
@@ -191,7 +194,7 @@ include './tools/tools.php'
                                 </a>
                             </li>
                               <li>
-                                <a href="./termList.php">
+                                <a href="#">
                                     <span class="menu-text">
                                         学期信息设置 </span>
                                     <i class="menu-expand"></i>
@@ -204,77 +207,118 @@ include './tools/tools.php'
                 <!-- /Sidebar Menu -->
             </div>
             <!-- /Page Sidebar -->
+
             <!-- Page Content -->
             <div class="page-content">
                 <!-- Page Breadcrumb -->
                 <div class="page-breadcrumbs">
-                    <ul class="breadcrumb">
-                                        <li>
-                        <a href="#">专业信息设置</a>
-                    </li>
-                                        <li>
-                        <a href="#">专业信息列表</a>
-                    </li>
-                    <li class="active">添加专业</li>
-                    </ul>
+                             <ul class='breadcrumb'>
+                               <li>
+                               <a href='#'>学期信息设置</a>
+                               </li>
+                               <li class='active'>学期信息列表</li>
+                               </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
 
                 <!-- Page Body -->
                 <div class="page-body">
-                    
-<div class="row">
-    <div class="col-lg-12 col-sm-12 col-xs-12">
-        <div class="widget">
-            <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">新增专业</span>
-            </div>
-            <div class="widget-body">
-                <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" action="./action/addMajorAction.php" method="get">
-                        <div class="form-group">
-                            <label for="Scollege" class="col-sm-2 control-label no-padding-right">学院</label>
-                            <div class="col-sm-6">
-                                <select id ="college" name="college" style="width: 100%;">
-                                          <option selected="selected" value="" >请选择学院</option>
-                                           <?php
-                                              getCollege();
-                                           ?>
-                                </select>
-                            </div>
-                        </div> 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label no-padding-right">专业名称</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" id="majorName" placeholder="" name="majorName" required="" type="text">
-                            </div>
-                            <!-- <p class="help-block col-sm-4 red">* 必填</p> -->
-                        </div>
-                         
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">保存信息</button>
+
+                    <button type="button" tooltip="添加学生信息" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = './add.php'">
+                        <i class="fa fa-plus"></i> Add
+                    </button>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="widget">
+                                <div class="widget-body">
+                                    <div class="flip-scroll">
+                                        <table class="table table-bordered table-hover">
+                                            <thead class="">
+                                                <tr>
+                                                    <th class="text-center">ID</th>
+                                                    <th class="text-center">学期</th>
+                                                    <th class="text-center">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               <?php 
+                                               start();
+                                               ?>
+                                               
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                    </div>
 
                 </div>
                 <!-- /Page Body -->
             </div>
             <!-- /Page Content -->
-		</div>	
-	</div>
+        </div>
+    </div>
 
-	    <!--Basic Scripts-->
+    <!--Basic Scripts-->
     <script src="style/jquery_002.js"></script>
     <script src="style/bootstrap.js"></script>
     <script src="style/jquery.js"></script>
     <!--Beyond Scripts-->
     <script src="style/beyond.js"></script>
-    
-</body></html>
+
+
+
+
+</body>
+
+</html>
+
+<?php
+function start(){
+   if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+           //构建sql
+           $sql ="select * from terminfo";
+           getTermData($sql);
+        }else{
+        echo  "<a href='./login.html'>还没登录请先登录</a>"; 
+     }
+
+}
+
+function getTermData($sql){
+
+// echo $sql;
+
+//连接数据库
+$mysqli = new mysqli("localhost",'root','123456','infodb') or die('连接数据库失败');
+
+
+//设置编码格式
+$mysqli->set_charset('utf8');
+
+
+//执行sql
+$res=$mysqli ->query($sql);
+
+if($res === false){
+	die('执行sql出错'.$sql);
+}
+
+
+while($msg = mysqli_fetch_row($res)) {
+    echo "<tr>";
+    echo "<td align='center'>".$msg[0]."</td>";      
+    echo "<td align='center'>".$msg[1]."</td>"; 
+    echo "<td align='center'>";
+    echo " <a href='./edit.php?action=edit&id=".$msg[0]."' class='btn btn-primary btn-sm shiny'>";                                                
+    echo " <i class='fa fa-edit'></i> 编辑  </a>";                                             
+    echo "<a href='./action/remove.php?action=student&id=".$msg[0]."
+          ' class='btn btn-danger btn-sm shiny'>
+          <i class='fa fa-trash-o'></i> 删除</a></td></tr>";
+        }
+        $mysqli->close();
+}
+?>

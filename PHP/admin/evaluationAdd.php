@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
-    <title>添加</title>
+    <title>添加测评信息</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

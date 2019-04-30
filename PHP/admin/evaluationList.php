@@ -225,7 +225,7 @@ session_start();
                 <!-- Page Body -->
                 <div class="page-body">
 
-                    <button type="button" tooltip="添加用户" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = './evaluationAdd.php'">
+                    <button type="button" tooltip="添加测评信息" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = './evaluationAdd.php'">
                         <i class="fa fa-plus"></i> Add
                     </button>
                     <div class="row">

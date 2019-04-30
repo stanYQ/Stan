@@ -8,7 +8,7 @@ session_start();
 
     <head>
         <meta charset="utf-8">
-        <title>专业列表</title>
+        <title>专业信息列表</title>
 
         <meta name="description" content="Dashboard">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -195,7 +195,7 @@ session_start();
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="./termList.php">
                                     <span class="menu-text">
                                         学期信息设置 </span>
                                     <i class="menu-expand"></i>

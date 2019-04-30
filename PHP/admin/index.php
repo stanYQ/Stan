@@ -195,7 +195,7 @@ session_start();
                                 </a>
                             </li>
                               <li>
-                                <a href="#">
+                                <a href="./termList.php">
                                     <span class="menu-text">
                                         学期信息设置 </span>
                                     <i class="menu-expand"></i>
