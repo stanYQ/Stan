@@ -1,7 +1,6 @@
 <?php
 include './action/editStart.php';
 include './tools/tools.php';
-session_start();
 ?>
 <!DOCTYPE html>
 <html><head>
@@ -376,7 +375,7 @@ session_start();
                     if(r.code == 200){
                         var list = r.list;
                         for (var i = 0; i < list.length; i++) {   // 循环返回的值（城市）
-                        option += "<option style='width:100%'>" + list[i] + "</option>";
+                        option += "<option style='width:100%'>" + list[i][0] + "</option>";
                         }
                     }
                     $("#major").html(option);    // js刷新第二个下拉框的值

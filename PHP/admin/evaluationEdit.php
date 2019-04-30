@@ -1,6 +1,5 @@
 <?php
 include './action/editEvaluationStart.php';
-session_start();
 ?>
 <!DOCTYPE html>
 <html><head>
@@ -232,15 +231,15 @@ session_start();
             <div class="widget-body">
                 <div id="horizontal-form">
                     <form class="form-horizontal" role="form" action="./action/editEvaluationAction.php" method="get">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label class="col-sm-2 control-label no-padding-right">学号</label>
                             <div class="col-sm-6">
                             <?php
-                            echo "<input class='form-control' id='Sno' placeholder='$list[1]' name='Sno' value='$list[1]' required='' type='text'>";
+                            // echo "<input class='form-control' id='Sno' placeholder='$list[1]' name='Sno' value='$list[1]' required='' type='text'>";
                             ?>
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>
+                        </div> -->
                          <div class="form-group">
                             <label for="" class="col-sm-2 control-label no-padding-right">所在学期</label>
                             <div class="col-sm-6">

@@ -1,6 +1,8 @@
 <?php
+session_start();
 // 查找当前需要修改的学生所有信息
 $id = $_GET['id'];
+$_SESSION['editID']=$id;
 //连接数据库
 $mysqli = new mysqli("localhost",'root','123456','infodb') or die('连接数据库失败');
 
