@@ -27,6 +27,10 @@ if($action == 'removeMajor'){
     remove($sql);
 }
 
+if($action =='removeTerm'){
+     $sql = "delete from terminfo WHERE Tno = '$id'";
+    remove($sql);
+}
 function remove($sql){
      
 //连接数据库
