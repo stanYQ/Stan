@@ -1,5 +1,6 @@
 <?php
-  $majorName = $_GET['oldMajorName'];
+  session_start();
+  $majorName = $_SESSION['editID'];
   $newMajorName = $_GET['newMajorName'];
   $college = $_GET['college'];
 //连接数据库
@@ -14,6 +15,7 @@
     if($res === false){
         die('执行sql出错'.$sql);
     }else{
+        $_SESSION['editID'] = null;
           echo "<h3>信息修改成功</h3>";
     echo "<h4>3秒后返回页面</h4>";
     echo "<a href='../majorList.php'>立刻返回</a>";

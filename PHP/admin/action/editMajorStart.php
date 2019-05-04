@@ -1,5 +1,7 @@
 <?php
+session_start();
 $major = $_GET['majorName'];
+$_SESSION['editID'] = $major;
 //连接数据库
 $mysqli = new mysqli("localhost",'root','123456','infodb') or die('连接数据库失败');
 

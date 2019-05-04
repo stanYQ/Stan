@@ -2,7 +2,7 @@
 <?php
 include './tools/tools.php';
 include './action/editMajorStart.php';
-session_start();
+// session_start();
 ?>
 <!DOCTYPE html>
 <html><head>
@@ -246,19 +246,10 @@ session_start();
                             </div>
                         </div> 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label no-padding-right">当前专业名称</label>
-                            <div class="col-sm-6">
-                               <?php
-                                echo "   <input class='form-control' id='oldMajorName' placeholder='$list[0]' value='$list[0]' name='oldMajorName'  type='text'>";
-                               ?>
-                            </div>
-                             <p class="help-block col-sm-4 red">* 请勿修改</p>
-                        </div>
-                        <div class="form-group">
                             <label class="col-sm-2 control-label no-padding-right">专业名称</label>
                             <div class="col-sm-6">
                                <?php
-                               echo "   <input class='form-control' id='newMajorName' placeholder='请输入新的专业名称' name='newMajorName'  type='text'>";
+                               echo "   <input class='form-control' id='newMajorName' placeholder='$list[0]' value='$list[0]' name='newMajorName'  type='text'>";
                                ?>
                             </div>
                         </div>
