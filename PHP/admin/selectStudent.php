@@ -219,7 +219,7 @@ session_start();
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="widget">
                                 <div class="widget-header bordered-bottom bordered-blue">
-                                    <h2 style="text-align:center">学生信息查询</h2>
+                                    <h2 style="text-align:center;padding-top:15px;">学生信息查询</h2>
                                       <div class="form-horizontal" >
                                         <!-- <form role="form" action="./action/selectStudentAction.php" method="get"> -->
                                             <div class="form-group">
@@ -251,24 +251,13 @@ session_start();
                                         <!-- </form> -->
                                     </div>
                                 </div>
-                                <div class="widget-body">
-                                  <div class="jumbotron">
-                                    
-                                    
-                                    </div>
-                                      <div class="jumbotron">
-                                    
-                                    
-                                    </div>
+                                <div class="widget-body" id ="widget-body">
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <!-- Page Body -->
-
-             
             <!-- /Page Body -->
         </div>
         <!-- /Page Content -->
@@ -287,7 +276,15 @@ session_start();
            var major = document.getElementById('major').value;
            var action = document.getElementById('action').value;
            var keyWord = document.getElementById('keyWord').value;
+           if(!action){
+               alert("请选择正确的查找方式");
+               return;
+           }
 
+           if(!keyWord){
+               alert("请输入关键字");
+               return;
+           }
           var data ={
               major:major,
               action:action,
@@ -298,10 +295,35 @@ session_start();
               type:"POST",
               data:data,
               success:function(res){
+                  var option ="";
                 //   console.log(res);
                   var r = JSON.parse(res);
-                  console.log(r.list);
-                //   console.log(r.list);
+                  console.log(res);
+                  console.log(r);
+
+                if(r.code == 200 &&r.list.length > 0){
+                    var list = r.list;
+                    for(var i = 0; i < list.length; i++){
+                        option +="<div class='jumbotron'>"+
+                                     "<table  class='table table-bordered table-hover'>"+
+                                     "<tr><th class='text-center'>学号</th> <th class='text-center'>姓名</th><th class='text-center'>性别</th>   <th class='text-center'>学院</th> </tr>"+
+                                     "<tr><td class='text-center'>"+list[i][0]+"</td>"+
+                                     "<td class='text-center'>" + list[i][1]+"</td>"+
+                                     "<td class='text-center'>" + list[i][2]+"</td>"+
+                                     "<td class='text-center'>" + list[i][4]+"</td>"+
+                                     "</tr>"+
+                                     "<tr><th class='text-center'>政治面貌</th><th class='text-center'>专业</th><th class='text-center'>出生日期</th><th class='text-center'>籍贯</th></tr>"+
+                                     "<tr><td class='text-center'>"+list[i][3]+"</td>"+
+                                     "<td class='text-center'>" + list[i][5]+"</td>"+
+                                     "<td class='text-center'>" + list[i][6]+"</td>"+
+                                     "<td class='text-center'>" + list[i][7]+"</td>"+
+                                     "</tr></table></div>";
+                    }
+                }
+                if(r.list.length==0){
+                    option = "<h1>未查找到记录</h1>"
+                }
+                $("#widget-body").html(option);
               }
           })
        }
