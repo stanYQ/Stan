@@ -92,12 +92,12 @@ session_start();
 			            <!-- Page Sidebar -->
             <div class="page-sidebar" id="sidebar">
                 <!-- Page Sidebar Header-->
-                <div class="sidebar-header-wrapper">
+                <!-- <div class="sidebar-header-wrapper">
                     <input class="searchinput" type="text">
                     <i class="searchicon fa fa-search"></i>
                     <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
                 </div>
-                <!-- /Page Sidebar Header -->
+                /Page Sidebar Header -->
                 <!-- Sidebar Menu -->
                 <ul class="nav sidebar-menu">
                     <!--Dashboard-->
@@ -111,14 +111,14 @@ session_start();
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="#">
+                                <a href="./selectStudent.php">
                                     <span class="menu-text">
                                         学生信息查询 </span>
                                     <i class="menu-expand"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="./selectEvaluation.php">
                                     <span class="menu-text">
                                        测评信息查询  </span>
                                     <i class="menu-expand"></i>

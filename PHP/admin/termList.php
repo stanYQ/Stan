@@ -94,13 +94,6 @@ session_start();
         <div class="page-container">
             <!-- Page Sidebar -->
             <div class="page-sidebar" id="sidebar">
-                <!-- Page Sidebar Header-->
-                <div class="sidebar-header-wrapper">
-                    <input class="searchinput" type="text">
-                    <i class="searchicon fa fa-search"></i>
-                    <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
-                </div>
-                <!-- /Page Sidebar Header -->
                 <!-- Sidebar Menu -->
                <ul class="nav sidebar-menu">
                     <!--Dashboard-->
@@ -114,14 +107,14 @@ session_start();
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="#">
+                                <a href="./selectStudent.php">
                                     <span class="menu-text">
                                         学生信息查询 </span>
                                     <i class="menu-expand"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="./selectEvaluation.php">
                                     <span class="menu-text">
                                        测评信息查询  </span>
                                     <i class="menu-expand"></i>
@@ -313,8 +306,6 @@ while($msg = mysqli_fetch_row($res)) {
     echo "<td align='center'>".$msg[0]."</td>";      
     echo "<td align='center'>".$msg[1]."</td>"; 
     echo "<td align='center'>";
-    echo " <a href='./edit.php?action=edit&id=".$msg[0]."' class='btn btn-primary btn-sm shiny'>";                                                
-    echo " <i class='fa fa-edit'></i> 编辑  </a>";                                             
     echo "<a href='./action/remove.php?action=removeTerm&id=".$msg[0]."
           ' class='btn btn-danger btn-sm shiny'>
           <i class='fa fa-trash-o'></i> 删除</a></td></tr>";
