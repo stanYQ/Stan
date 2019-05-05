@@ -148,7 +148,7 @@ session_start();
                         </ul>
                     </li>
                     <li>
-                        <a href="./selectEvaluation.php" class="menu-dropdown">
+                        <a href="#" class="menu-dropdown">
                             <i class="menu-icon fa fa-gear"></i>
 
                             <span class="menu-text">
@@ -213,24 +213,51 @@ session_start();
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
-
-                <!-- Page Body -->
-
                 <div class="page-body">
+                    
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="widget">
-                                <div class="widget-body">
-                                    <div class="flip-scroll">
-                                     <?php start()?>
-                                       
+                                <div class="widget-header bordered-bottom bordered-blue">
+                                    <h2 style="text-align:center;padding-top:15px;">学生信息查询</h2>
+                                      <div class="form-horizontal" >
+                                        <!-- <form role="form" action="./action/selectStudentAction.php" method="get"> -->
+                                            <div class="form-group">
+                                                 <div class="col-sm-4">
+                                                    <select id="action" name="action" style="width: 100%;">
+                                                    <option selected="selected" value="">请选择查询方式</option>
+                                                    <option value="id">按照学号查询</option>
+                                                    <option value="name">按照姓名查询</option>
+                                                    <option value="major">按照学生所在专业查询</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="input-group">
+                                                    <input id="keyWord" type="text" name="keyWord" class="form-control" placeholder="Search for...">
+                                                    <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button" onclick='selectAction()'>Select!</button>
+                                                    </span>
+                                                     </div>
+                                                     </div><!-- /.col-lg-6 -->
+                                                <div class="col-sm-4">
+                                                    <select id="term" name="term" style="width: 100%;">
+                                                    <option selected="selected" value="">学期</option>
+                                                     <?php
+                                                       getTerm();
+                                                     ?>
+                                                    </select>
+                                                </div>
+                                        </div> 
+                                        <!-- </form> -->
                                     </div>
+                                </div>
+                                <div class="widget-body" id ="widget-body">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <!-- Page Body -->
             <!-- /Page Body -->
         </div>
         <!-- /Page Content -->
@@ -243,6 +270,68 @@ session_start();
     <script src="style/jquery.js"></script>
     <!--Beyond Scripts-->
     <script src="style/beyond.js"></script>
+
+    <script type='text/javascript'>
+       function selectAction(){
+           var term = document.getElementById('term').value;
+           var action = document.getElementById('action').value;
+           var keyWord = document.getElementById('keyWord').value;
+           if(!action){
+               alert("请选择正确的查找方式");
+               return;
+           }
+
+           if(!keyWord){
+               alert("请输入关键字");
+               return;
+           }
+          var data ={
+              term:term,
+              action:action,
+              keyWord:keyWord,
+          }
+          $.ajax({
+              url:"./action/selectEvalutionAction.php",
+              type:"POST",
+              data:data,
+              success:function(res){
+                  var option ="";
+                  console.log(res);
+                  var r = JSON.parse(res);
+                //   console.log(res);
+                  console.log(r.list);
+
+                if(r.code == 200 &&r.list.length > 0){
+                    var list = r.list;
+                    for(var i = 0; i < list.length; i++){
+                        option +="<div class='jumbotron'>"+
+                                     "<table  class='table table-bordered table-hover'>"+
+                                     "<tr><th class='text-center'>学号</th> <th class='text-center'>姓名</th><th class='text-center'>专业</th>   <th class='text-center' colspan='2'>所评价学期</th> </tr>"+
+                                     "<tr><td class='text-center'>"+list[i][1]+"</td>"+
+                                     "<td class='text-center'>" + list[i][10]+"</td>"+
+                                     "<td class='text-center'>" + list[i][14]+"</td>"+
+                                     "<td class='text-center' colspan='2'>" + list[i][2]+"</td>"+
+                                     "</tr>"+
+                                     "<tr><th class='text-center'>思想道德素质分</th><th class='text-center'>专业理论素质分</th><th class='text-center'>身体素质分</th><th class='text-center'>人文素质分</th><th class='text-center'>创新实践素质分</th></tr>"+
+                                     "<tr><td class='text-center'>"+list[i][3]+"</td>"+
+                                     "<td class='text-center'>" + list[i][4]+"</td>"+
+                                     "<td class='text-center'>" + list[i][5]+"</td>"+
+                                     "<td class='text-center'>" + list[i][6]+"</td>"+
+                                     "<td class='text-center'>" + list[i][7]+"</td>"+
+                                     "</tr>"+
+                                     "<tr><th class='text-center' colspan = '5'>对该生综合素质评价</th>"+
+                                     "<tr><td class='text-center' colspan = '5'>"+ list[i][8]+"</td></tr>"+
+                                     "</table></div>";
+                    }
+                }
+                if(r.list.length==0){
+                    option = "<h1>未查找到记录</h1>"
+                }
+                $("#widget-body").html(option);
+              }
+          })
+       }
+    </script>
 </body>
 
 </html>
@@ -255,5 +344,25 @@ function start(){
         echo  "<a href='./login.html'>还没登录请先登录</a>"; 
      }
 
+}
+
+function getTerm(){
+        if (!isset($_SESSION['user']) && empty($_SESSION['user'])){
+          return;
+      }
+    $sql = "select * from terminfo";
+    //连接数据库
+    $mysqli = new mysqli("localhost",'root','123456','infodb') or die('连接数据库失败');
+    //设置编码格式
+    $mysqli->set_charset('utf8');
+    //执行sql
+    $res=$mysqli ->query($sql);
+    if($res === false){
+        die('执行sql出错'.$sql);
+    }
+    while($msg = mysqli_fetch_row($res)) {
+        echo "<option value=".$msg[0].">".$msg[1]."</option>";
+    }
+    $mysqli->close();
 }
 ?>
